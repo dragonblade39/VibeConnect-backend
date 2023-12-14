@@ -3,7 +3,7 @@ const express = require("express");
 const FL = require("./routes/userDataRoutes");
 const SL = require("./routes/signUpVerification");
 const cors = require("cors");
-const UserOTPVerification = require("../backend/Schema/UserOTPVerification");
+const UserOTPVerification = require("./Schema/UserOTPVerification");
 
 const app = express();
 
