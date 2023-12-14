@@ -9,9 +9,9 @@
     "uuid": "^9.0.1"
   },
   "scripts": {
-    "build": "rm -rf node_modules && npm install"
+    "build": "npm install"
   },
   "engines": {
-    "node": "16.1"
+    "node": "20.10.0"
   }
 }
