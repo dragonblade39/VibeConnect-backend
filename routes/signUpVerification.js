@@ -186,9 +186,12 @@ router.post("/verifyOTPforPassword", async (req, res) => {
             throw new Error("Invalid code passed. Check your inbox.");
           } else {
             afterPasswordVerification({ username, email }, res);
+            const bcrypt = require("bcrypt");
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
             await Schema.updateOne(
               { username: username },
-              { password: password }
+              { password: hashedPassword }
             );
             await UserOTPVerification.deleteMany({ username });
           }
