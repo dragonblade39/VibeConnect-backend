@@ -70,14 +70,14 @@ router.delete("/delete", async (req, res) => {
 router.post("/update", async (req, res) => {
   try {
     const { username, name, email, password } = req.body;
-
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
     // Check if a user with the provided username exists in the database
     const existingUser = await Schema.findOne({ username });
 
     if (existingUser) {
       // Update the existing user's information
       existingUser.name = name;
-      existingUser.password = password;
+      existingUser.password = hashedPassword;
       await existingUser.save();
 
       res.status(200).json({ message: "User data updated successfully" });
