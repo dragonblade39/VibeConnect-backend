@@ -13,7 +13,7 @@ router.post("/login", async (req, res) => {
 
     if (user) {
       // Compare the hashed password
-      const isPasswordValid = bcrypt.compare(password, user.password);
+      const isPasswordValid = await bcrypt.compare(password, user.password);
 
       if (isPasswordValid) {
         res.json("Login successful");
